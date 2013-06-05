@@ -36,10 +36,10 @@ if __name__ == '__main__':
 	for line in sys.stdin:
 		url = line.strip()
 		filename = url.split('/')[-1]
-		print "Download %s as %s" % (url, filename)
+		print ("Download %s as %s" % (url, filename))
 		queue.put((url, filename))
 		
 	# if we get here, stdin has gotten the ^D
-	print "Finishing current downloads"
+	print("Finishing current downloads")
 	for i in xrange(5):
 		queue.put((None, None))
