@@ -34,3 +34,7 @@ def upload(picPath):
     print urllib2.urlopen(request).info()
 	
 upload("661.jpg")
+
+# Trying with GET request and url from gravatar
+
+# print urllib2.urlopen('http://www.google.com/searchbyimage?image_url=http%3A%2F%2Fgravatar.com%2Favatar%2Fa007be5a61f6aa8f3e85ae2fc18dd66e&image_content=').info()
