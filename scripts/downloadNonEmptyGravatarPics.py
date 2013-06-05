@@ -1,6 +1,7 @@
 import csv							# Read from and write to CSV files
 import os							# Path manipulations (e.g., os.path.abspath)
 import sys
+import time
 import urllib2				# Open URLs
 
 from unicodeMagic import UnicodeReader, UnicodeWriter
@@ -34,17 +35,17 @@ fd = open(os.path.join(dataPath, 'SOusers-Mar13.csv'), 'rb')
 reader = UnicodeReader(fd)
 
 idx = 0
-SOhashs = []
+SOhashes = {}
 picsPath = os.path.abspath("C:/Users/Alexandre/Git/gravatars/resources/pictures/")
 
 for row in reader:
 
 	# row = [uid, name, hash, rep]
-	if idx < 200:
+	if idx < 500:
 		so_uid = row[0]			
 		so_hash = row[2]
-		if(not (so_hash in SOhashs)): # if it doesn't be ever downloaded
-			SOhashs.append(so_hash)
+		if(not (SOhashes.has_key(so_hash)): # if it doesn't be ever downloaded
+			SOhashes[so_hash] = so_uid
 			url = 'http://www.gravatar.com/avatar/%s' % so_hash
 			if(not isDefaultPic(url)):
 				filepath = os.path.join(picsPath,'%d.jpg' % int(so_uid))
@@ -52,6 +53,7 @@ for row in reader:
 			else:
 				print("%s is default picture" % (so_uid))
 	idx += 1
+	time.sleep(0.5)
 
 # If here, download finished. Stop threads
 for i in xrange(10):
