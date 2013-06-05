@@ -44,7 +44,7 @@ for row in reader:
 	if idx < 500:
 		so_uid = row[0]			
 		so_hash = row[2]
-		if(not (SOhashes.has_key(so_hash)): # if it doesn't be ever downloaded
+		if(not (SOhashes.has_key(so_hash))): # if it doesn't be ever downloaded
 			SOhashes[so_hash] = so_uid
 			url = 'http://www.gravatar.com/avatar/%s' % so_hash
 			if(not isDefaultPic(url)):
@@ -53,7 +53,7 @@ for row in reader:
 			else:
 				print("%s is default picture" % (so_uid))
 	idx += 1
-	time.sleep(0.5)
+	time.sleep(0.1)
 
 # If here, download finished. Stop threads
 for i in xrange(10):
