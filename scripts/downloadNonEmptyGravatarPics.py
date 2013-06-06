@@ -1,18 +1,14 @@
-import csv							# Read from and write to CSV files
-import os							# Path manipulations (e.g., os.path.abspath)
-import sys
+import os # Path manipulations (e.g., os.path.abspath)
 import time
-import urllib2				# Open URLs
+import urllib2 # Open URLs
 
-from unicodeMagic import UnicodeReader, UnicodeWriter
-
-from downloader import Downloader	# Downloader module (for the mailing list archive files)
-
-from Queue import Queue				# Multi-threading support for Downloader
+from unicodeMagic import UnicodeReader
+from downloader import Downloader # Downloader module (for the mailing list archive files)
+from Queue import Queue # Multi-threading support for Downloader
 
 def isDefaultPic(url):
 	try:
-		response = urllib2.urlopen("%s?d=404" % (url)) # throw an exception in case of default gravatar picture
+		urllib2.urlopen("%s?d=404" % (url)) # throw an exception in case of default gravatar picture
 		return False
 	except Exception:
 		return True

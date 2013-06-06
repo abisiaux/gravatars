@@ -2,7 +2,6 @@
 
 import mimetypes
 from cStringIO import StringIO
-import urllib
 import urllib2
 
 from MultiPartForm import MultiPartForm
@@ -32,8 +31,9 @@ def upload(picPath):
     print 'SERVER RESPONSE:'
     #print urllib2.urlopen(request).read()
     print urllib2.urlopen(request).info()
-	
-upload("661.jpg")
+    
+
+upload("../resources/pictures/661.jpg")
 
 # Trying with GET request and url from gravatar
 
