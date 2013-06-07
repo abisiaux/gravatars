@@ -14,7 +14,7 @@ def isDefaultPic(url):
 		return True
 		
 	
-dataPath = os.path.abspath("C:/Users/Alexandre/Git/gravatars/resources")
+dataPath = os.path.abspath("../resources")
 
 # Set up downloader
 
@@ -32,7 +32,7 @@ reader = UnicodeReader(fd)
 
 idx = 0
 SOhashes = {}
-picsPath = os.path.abspath("C:/Users/Alexandre/Git/gravatars/resources/pictures/")
+picsPath = os.path.abspath("../resources/pictures/")
 
 for row in reader:
 
@@ -40,7 +40,7 @@ for row in reader:
 	if idx < 500:
 		so_uid = row[0]			
 		so_hash = row[2]
-		if(not (SOhashes.has_key(so_hash))): # if it doesn't be ever downloaded
+		if(not (SOhashes.has_key(so_hash))): # if it is not already downloaded
 			SOhashes[so_hash] = so_uid
 			url = 'http://www.gravatar.com/avatar/%s' % so_hash
 			if(not isDefaultPic(url)):
