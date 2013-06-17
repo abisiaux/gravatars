@@ -31,6 +31,7 @@ nosetests.xml
 
 # Mr Developer
 resources/pictures/*
+resources/SOpictures/*
 .mr.developer.cfg
 .project
 .pydevproject

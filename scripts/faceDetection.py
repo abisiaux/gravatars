@@ -3,14 +3,16 @@
 #===============================================================================
 
 import cv2
-import os
-faces = []
-for f in os.listdir('../resources/pictures/'):
-    img = cv2.cv.LoadImage('../resources/pictures/%s' % f, 0)
-    haar=cv2.cv.Load('../resources/haarcascade_frontalface_default.xml')
-    detected = cv2.cv.HaarDetectObjects(img, haar, cv2.cv.CreateMemStorage(), 1.2, 2,cv2.cv.CV_HAAR_DO_CANNY_PRUNING, (10,10))
-    if detected:
-        faces.append(f)
+
+class FaceDetector():
+    def __init__(self):
+        self.front=cv2.cv.Load('../resources/haarcascade_frontalface_default.xml')
+        self.profile=cv2.cv.Load('../resources/haarcascade_profileface.xml')
         
-# Sort the face by so_uid
-print "Faces = %s " % sorted([int(i.split('.',1)[0]) for i in faces])
+    def isFrontFace(self, img):
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        return cv2.cv.HaarDetectObjects(cv2.cv.fromarray(img), self.front, cv2.cv.CreateMemStorage(), 1.3, 2,cv2.cv.CV_HAAR_DO_CANNY_PRUNING, (10,10))
+    
+    def isProfileFace(self, img):
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+        return cv2.cv.HaarDetectObjects(cv2.cv.fromarray(img), self.profile, cv2.cv.CreateMemStorage(), 1.3, 2,cv2.cv.CV_HAAR_DO_CANNY_PRUNING, (10,10))

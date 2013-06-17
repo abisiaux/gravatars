@@ -6,7 +6,10 @@ from unicodeMagic import UnicodeReader
 from downloader import Downloader # Downloader module (for the mailing list archive files)
 from Queue import Queue # Multi-threading support for Downloader
 
-def isDefaultPic(url):
+dataPath = os.path.abspath("../resources")
+picsPath = os.path.abspath("../resources/SOpictures/")
+
+def isDefaultGravatarPic(url):
 	try:
 		urllib2.urlopen("%s?d=404" % (url)) # throw an exception in case of default gravatar picture
 		return False
@@ -14,8 +17,6 @@ def isDefaultPic(url):
 		return True
 		
 	
-dataPath = os.path.abspath("../resources")
-
 # Set up downloader
 
 queue = Queue()
@@ -32,7 +33,6 @@ reader = UnicodeReader(fd)
 
 idx = 0
 SOhashes = {}
-picsPath = os.path.abspath("../resources/pictures/")
 
 for row in reader:
 
@@ -43,7 +43,7 @@ for row in reader:
 		if(not (SOhashes.has_key(so_hash))): # if it is not already downloaded
 			SOhashes[so_hash] = so_uid
 			url = 'http://www.gravatar.com/avatar/%s' % so_hash
-			if(not isDefaultPic(url)):
+			if(not isDefaultGravatarPic(url)):
 				filepath = os.path.join(picsPath,'%d.jpg' % int(so_uid))
 				queue.put((url, filepath))
 			else:
