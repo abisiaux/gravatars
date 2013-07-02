@@ -32,6 +32,7 @@ nosetests.xml
 # Mr Developer
 resources/pictures/*
 resources/SOpictures/*
+scripts/not_commit/*
 .mr.developer.cfg
 .project
 .pydevproject
