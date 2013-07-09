@@ -13,20 +13,7 @@ from Queue import Queue # Multi-threading support for Downloader
 from unicodeMagic import UnicodeReader, UnicodeWriter
 from faceDetection import FaceDetector
 import pictureUtils as picUtils
-import time, os, sys, urllib2        
-    
-"""
-Check if a so_hash correspond to a default gravatar picture
-@param so_hash: Mail hash of the SO user
-@return: True if it links to the default gravatar picture, False otherwise
-"""
-def isDefaultGravatarPic(so_hash):
-    url = 'http://www.gravatar.com/avatar/%s' % so_hash
-    try:
-        urllib2.urlopen("%s?d=404" % (url)) # throw an exception in case of default gravatar picture
-        return False
-    except Exception:
-        return True
+import time, os, sys
 
 """
 Main Program
@@ -67,7 +54,7 @@ def main():
                 so_hash = row[2]
                 if(not (SOhashes.has_key(so_hash))): # if it is not already downloaded
                     SOhashes[so_hash] = so_uid
-                    if(not isDefaultGravatarPic(so_hash)):
+                    if(not picUtils.isDefaultGravatarPic(so_hash)):
                         # Download picture
                         filepath = os.path.join('%s%d.jpg' % (picPath,int(so_uid)))
                         #if not os.path.isfile(filepath):

@@ -3,8 +3,21 @@
 @author: Alexandre Bisiaux
 """
 
-import cv2
+import cv2, urllib2
 import numpy as np
+
+"""
+Check if a so_hash correspond to a default gravatar picture
+@param so_hash: Mail hash of the SO user
+@return: True if it links to the default gravatar picture, False otherwise
+"""
+def isDefaultGravatarPic(so_hash):
+    url = 'http://www.gravatar.com/avatar/%s' % so_hash
+    try:
+        urllib2.urlopen("%s?d=404" % (url)) # throw an exception in case of default gravatar picture
+        return False
+    except Exception:
+        return True
 
 """
 Load a picture using OpenCv

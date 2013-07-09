@@ -53,10 +53,9 @@ class Wikipedia():
         for c in categories:
             graph.add_node(c)
             for p in self.getMostRelevantParents(c):
-                if graph.has_node(p):
-                    return graph
                 graph.add_edge(p, c)
-                parents.append(p)
+                if not graph.has_node(p):
+                    parents.append(p)
         categories = parents
         return graph 
     
@@ -80,7 +79,7 @@ class Wikipedia():
         toReturn = []
         parents = wiki.getCategories()
         for p in parents:
-            if len(toReturn) > 10:
+            if len(toReturn) > 12:
                 break
             if "by" in p:
                 toReturn += self.getMostRelevantParents(p)
@@ -118,7 +117,7 @@ def sortGraphByDegree(G):
     return nodes
 
 #===============================================================================
-# wiki = Wikipedia("Jeff_Atwood")
+# wiki = Wikipedia("Stack_Overflow")
 # G = wiki.getCategoryGraph()
 # print G.nodes()
 # nx.draw(G)
