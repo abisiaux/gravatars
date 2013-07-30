@@ -29,8 +29,8 @@ _FARTHEST_NEIGHBOR = True
 _NEAREST_NEIGHBOR = True
 _AVERAGE_SATURATION = True
 _THRESHOLD_BRIGHTNESS = True
-_GOOGLE = True
-_WIKIPEDIA = True
+_GOOGLE = False
+_WIKIPEDIA = False
 
 
 """
@@ -60,8 +60,9 @@ def main():
         threads.append(Downloader(queue))
         threads[-1].start()
     idx = 0
+    
     for row in reader:
-        if idx < 500:
+        if idx < 10000:
             so_uid = row[0]            
             so_hash = row[1]
             if(not (SOhashes.has_key(so_hash))):
