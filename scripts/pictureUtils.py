@@ -135,21 +135,28 @@ Get the average saturation and the percentage of pixel having brigthness above a
 @param thresholdBriht: Threshold for brightness
 @return: The average saturation in img and % of pixel having a brightness >= thresholdBright
 """
-def computeAvgSatThrBrightness(img, thresholdBright):
+def threBrightness(img, threshold):
     im = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) # convert image to hsv space
-    _, sat, val = cv2.split(im)
+    _, _, val = cv2.split(im)
     size = np.size(val)
     VcountTr = 0
     val = val/float(255)
     # Go over each pixel's brightness value
     for l in val:
         for p in l:
-            if p >= thresholdBright:
+            if p >= threshold:
                 VcountTr += 1
-    percentBr = (VcountTr / float(size))*100
-    avgSat = np.mean(sat)
-    return avgSat, percentBr
-    
+    return (VcountTr / float(size))*100
+
+"""
+Compute the average pixel saturation in the image
+@param img: Image in bgr space
+@return: The average saturation
+"""
+def avgSaturation(img):
+    im = cv2.cvtColor(img, cv2.COLOR_BGR2HSV) # convert image to hsv space
+    _, sat, _ = cv2.split(im)
+    return np.mean(sat)
 """
 Quantify a picture with only k colors
 Use k-means
@@ -214,8 +221,8 @@ def mostCommonColor(img):
             frac2 = v2 / (float((h*w))) * 100
             return c1, frac1, c2, frac2
         else:
-            return c1, frac1, None, None
-    return None, None, None, None
+            return c1, frac1, None, 0
+    return None, 0, None, 0
 
 """
 Detect circle in an image
@@ -239,7 +246,7 @@ Detect corners in an image using Harris detector
 @param image: Image to analyze
 @return: The number of corners in the picture
 """
-def detectCorners(image):
+def corners(image):
     # Convert it into gray scale
     gray_img = cv2.cvtColor(image, cv2.COLOR_RGB2GRAY)
     # Apply a gaussian blur to avoid noize

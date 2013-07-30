@@ -5,7 +5,7 @@
 
 from HTMLParser import HTMLParser
 from xml.etree import cElementTree as etree
-
+import requests
 
 """
 Get text of a tree node 
@@ -14,6 +14,20 @@ Get text of a tree node
 """
 def get_text_recursive(node):
     return (node.text or '') + ' '.join(map(get_text_recursive, node)) + (node.tail or '')
+
+"""
+Parse the content of a html page
+@param url: URL of the page
+@return: An XML tree of the page content
+"""
+def parse(url):
+    response = requests.get(url, headers={'Content-Type' : 'application/octet-stream',
+           'User-Agent' : 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36'}, allow_redirects=True)
+    parser = MyParser()
+    encoding = response.encoding
+    response = (response.content).decode(encoding)
+    parser.feed(response)
+    return parser.close()
 
 """
 @summary: Custom HTML parser using HTMLParser library, store the result in a tree
