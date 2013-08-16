@@ -2,7 +2,8 @@
 @summary: Some tools to do research on Google images and Google search engine
 @author: Alexandre Bisiaux
 """
-import requests, re, urllib2
+
+import requests, re, urllib2 
 from htmlParser import MyParser, get_text_recursive
 from htmlentitydefs import name2codepoint
 
