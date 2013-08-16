@@ -1,10 +1,10 @@
 """
-@summary: Read a csv file, construct a dictionary of lines content and randomize it
+@summary: Read a csv file, build a dictionary of lines content and randomize it
 @author: Alexandre Bisiaux
 """
 
 from unicodeMagic import UnicodeReader
-import random, os
+import random
 
 """
 @summary: Read a csv file, construct a dictionary of lines content and randomize it
@@ -15,8 +15,7 @@ class RandomReader:
     """
     def __init__(self, f):
         reader = UnicodeReader(f)
-        
-        self.content = {}       
+        self.content = {}
         i = 0
         for row in reader:
             line = []
@@ -43,10 +42,3 @@ class RandomReader:
     def next(self):
         k = self.iterator.next()
         return self.content[k]
-    
-#===============================================================================
-# f = open(os.path.join("../resources/trainingSet.csv"), 'rb')
-# reader = RandomReader(f)
-# for row in reader:
-#     print row
-#===============================================================================

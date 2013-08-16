@@ -1,6 +1,6 @@
 import re, htmlParser
 import networkx as nx
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt # Only for display the graph
 
 """
 Normalize a string for wikipedia search
@@ -118,13 +118,5 @@ class Wikipedia():
         nodes = sorted(nx.degree(self.G))
         nodes.remove(self.root)
         return nodes
-    
-#===============================================================================
-# wiki = Wikipedia("Jeff_Atwood")
-# G = wiki.categoryGraph(4)
-# #print G.nodes(data=True)
-# nx.draw(G)
-# plt.show()
-#===============================================================================
         
             

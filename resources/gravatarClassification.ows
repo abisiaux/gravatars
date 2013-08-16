@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<scheme description="" title="gravatarClassification" version="2.0">
+	<nodes>
+		<node id="0" name="File" position="(150, 150)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Data.OWFile.OWFile" title="Sample Set" version="" />
+		<node id="1" name="Select Attributes" position="(300, 150)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Data.OWDataDomain.OWDataDomain" title="Select Attributes" version="" />
+		<node id="2" name="k Nearest Neighbours" position="(600, 300)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWKNN.OWKNN" title="k Nearest Neighbours Euclidean" version="" />
+		<node id="3" name="Test Learners" position="(845.0, 115.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Evaluate.OWTestLearners.OWTestLearners" title="Test Learners" version="" />
+		<node id="4" name="k Nearest Neighbours" position="(600.0, 186.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWKNN.OWKNN" title="k Nearest Neighbours Manhattan" version="" />
+		<node id="5" name="k Nearest Neighbours" position="(600.0, 422.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWKNN.OWKNN" title="k Nearest Neighbours Hamming" version="" />
+		<node id="6" name="k Nearest Neighbours" position="(600.0, 539.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWKNN.OWKNN" title="k Nearest Neighbours Maximum" version="" />
+		<node id="7" name="Classification Tree" position="(602.0, 657.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWClassificationTree.OWClassificationTree" title="Classification Tree" version="" />
+		<node id="8" name="Classification Tree Viewer" position="(750, 600)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Classify.OWClassificationTreeViewer.OWClassificationTreeViewer" title="Classification Tree Viewer" version="" />
+		<node id="9" name="Data Table" position="(274.0, 287.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Data.OWDataTable.OWDataTable" title="Data Table" version="" />
+		<node id="10" name="Data Table" position="(858.0, 256.0)" project_name="Orange" qualified_name="Orange.OrangeWidgets.Data.OWDataTable.OWDataTable" title="Data Table (1)" version="" />
+	</nodes>
+	<links>
+		<link enabled="true" id="0" sink_channel="Data" sink_node_id="1" source_channel="Data" source_node_id="0" />
+		<link enabled="true" id="1" sink_channel="Data" sink_node_id="2" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="2" sink_channel="Learner" sink_node_id="3" source_channel="Learner" source_node_id="2" />
+		<link enabled="true" id="3" sink_channel="Data" sink_node_id="3" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="4" sink_channel="Data" sink_node_id="4" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="5" sink_channel="Data" sink_node_id="5" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="6" sink_channel="Data" sink_node_id="6" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="7" sink_channel="Data" sink_node_id="7" source_channel="Data" source_node_id="1" />
+		<link enabled="true" id="8" sink_channel="Learner" sink_node_id="3" source_channel="Learner" source_node_id="4" />
+		<link enabled="true" id="9" sink_channel="Learner" sink_node_id="3" source_channel="Learner" source_node_id="5" />
+		<link enabled="true" id="10" sink_channel="Learner" sink_node_id="3" source_channel="Learner" source_node_id="6" />
+		<link enabled="true" id="11" sink_channel="Learner" sink_node_id="3" source_channel="Learner" source_node_id="7" />
+		<link enabled="true" id="12" sink_channel="Classification Tree" sink_node_id="8" source_channel="Classification Tree" source_node_id="7" />
+		<link enabled="true" id="13" sink_channel="Data" sink_node_id="9" source_channel="Data" source_node_id="1" />
+	</links>
+	<annotations />
+	<thumbnail />
+	<node_properties>
+		<properties format="literal" node_id="0">{'widgetShown': 0, 'showAdvanced': True, 'createNewOn': 1, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x01\xe0\x00\x00\x00l\x00\x00\x03u\x00\x00\x02\xd3\x00\x00\x01\xe8\x00\x00\x00\x8b\x00\x00\x03m\x00\x00\x02\xcb\x00\x00\x00\x00\x00\x00', 'recentFiles': [u'C:/Users/Alexandre/workspace/gravatars/resources/sampleSet2.tab', u'C:/Users/Alexandre/workspace/gravatars/resources/sampleSet.tab']}</properties>
+		<properties format="literal" node_id="1">{'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02\xce\x00\x00\x009\x00\x00\x04\xd1\x00\x00\x02\xb7\x00\x00\x02\xd6\x00\x00\x00X\x00\x00\x04\xc9\x00\x00\x02\xaf\x00\x00\x00\x00\x00\x00'}</properties>
+		<properties format="literal" node_id="2">{'normalize': 1, 'metrics': 0, 'name': u'kNN Euclidean', 'ranks': 0, 'k': 67, 'ignoreUnknowns': 0, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02&lt;\x00\x00\x00\xb4\x00\x00\x03\x1a\x00\x00\x02\x17\x00\x00\x02?\x00\x00\x00\xce\x00\x00\x03\x17\x00\x00\x02\x14\x00\x00\x00\x00\x00\x00'}</properties>
+		<properties format="pickle" node_id="3">(dp1
+S'selectedCScores'
+p2
+ccopy_reg
+_reconstructor
+p3
+(c__builtin__
+list
+p4
+g4
+(ttRp5
+I0
+aI1
+aI2
+aI3
+aI6
+asS'selectedRScores'
+p6
+g3
+(g4
+g4
+(ttRp7
+I1
+aI4
+aI6
+asS'pLearning'
+p8
+I70
+sS'precision'
+p9
+I4
+sS'widgetShown'
+p10
+I0
+sS'pRepeat'
+p11
+I10
+sS'resampling'
+p12
+I0
+sS'savedWidgetGeometry'
+p13
+S'\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02\xab\x00\x00\x00\x00\x00\x00\x05U\x00\x00\x02\xe1\x00\x00\x02\xb3\x00\x00\x00\x1f\x00\x00\x05M\x00\x00\x02\xd9\x00\x00\x00\x00\x02\x00'
+p14
+sS'nFolds'
+p15
+I10
+sS'applyOnAnyChange'
+p16
+I00
+s.</properties>
+		<properties format="literal" node_id="4">{'normalize': False, 'metrics': 2, 'name': u'kNN Manhattan', 'ranks': 0, 'k': 67, 'ignoreUnknowns': 0, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02&lt;\x00\x00\x00\xb4\x00\x00\x03\x1a\x00\x00\x02\x17\x00\x00\x02?\x00\x00\x00\xce\x00\x00\x03\x17\x00\x00\x02\x14\x00\x00\x00\x00\x00\x00'}</properties>
+		<properties format="literal" node_id="5">{'normalize': False, 'metrics': 1, 'name': u'kNN Hamming', 'ranks': 0, 'k': 67, 'ignoreUnknowns': 0, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02&lt;\x00\x00\x00\xb4\x00\x00\x03\x1a\x00\x00\x02\x17\x00\x00\x02?\x00\x00\x00\xce\x00\x00\x03\x17\x00\x00\x02\x14\x00\x00\x00\x00\x00\x00'}</properties>
+		<properties format="literal" node_id="6">{'normalize': False, 'metrics': 3, 'name': u'kNN Maximal', 'ranks': 0, 'k': 67, 'ignoreUnknowns': 0, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x02&lt;\x00\x00\x00\xb4\x00\x00\x03\x1a\x00\x00\x02\x17\x00\x00\x02?\x00\x00\x00\xce\x00\x00\x03\x17\x00\x00\x02\x14\x00\x00\x00\x00\x00\x00'}</properties>
+		<properties format="literal" node_id="7">{'bin': 0, 'subset': 0, 'preNodeMajP': 95, 'name': 'Classification Tree', 'postMaj': 1, 'preLeafInst': 1, 'postMPruning': 1, 'postM': 2.0, 'limitDepth': False, 'relK': 5, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\x00\x00\x01\xf8\x00\x00\x001\x00\x00\x03S\x00\x00\x02\x90\x00\x00\x01\xfb\x00\x00\x00K\x00\x00\x03P\x00\x00\x02\x8d\x00\x00\x00\x00\x00\x00', 'estim': 0, 'maxDepth': 100, 'relM': 100, 'widgetShown': 0, 'preLeafInstP': 2, 'preNodeInstP': 5, 'preNodeInst': 0, 'preNodeMaj': 0}</properties>
+		<properties format="literal" node_id="8">{'expslider': 5, 'adist': 1, 'sliderValue': 5, 'pmaj': 1, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\xff\xff\xff\xf8\xff\xff\xff\xf8\x00\x00\x05]\x00\x00\x02\xe9\x00\x00\x01\x0c\x00\x00\x00\xa9\x00\x00\x04I\x00\x00\x029\x00\x00\x00\x00\x02\x00', 'inst': 1, 'ptarget': 1, 'maj': 1, 'dist': 1}</properties>
+		<properties format="literal" node_id="9">{'autoCommit': False, 'showMeta': 1, 'distColorRgb': (220, 220, 220, 255), 'showAttributeLabels': 1, 'showDistributions': 1, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\xff\xff\xff\xf8\xff\xff\xff\xf8\x00\x00\x05]\x00\x00\x02\xe9\x00\x00\x01\xfd\x00\x00\x00j\x00\x00\x03Y\x00\x00\x02x\x00\x00\x00\x00\x02\x00', 'selectedSchemaIndex': 0, 'colorByClass': True}</properties>
+		<properties format="literal" node_id="10">{'autoCommit': False, 'showMeta': 1, 'distColorRgb': (220, 220, 220, 255), 'showAttributeLabels': 1, 'showDistributions': 1, 'widgetShown': 0, 'savedWidgetGeometry': '\x01\xd9\xd0\xcb\x00\x01\x00\x00\xff\xff\xff\xf8\xff\xff\xff\xf8\x00\x00\x05]\x00\x00\x02\xe9\x00\x00\x01\xfd\x00\x00\x00j\x00\x00\x03Y\x00\x00\x02x\x00\x00\x00\x00\x02\x00', 'selectedSchemaIndex': 0, 'colorByClass': True}</properties>
+	</node_properties>
+</scheme>

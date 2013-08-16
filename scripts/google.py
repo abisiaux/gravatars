@@ -2,44 +2,13 @@
 @summary: Some tools to do research on Google images and Google search engine
 @author: Alexandre Bisiaux
 """
-import requests, re, urllib2, nltk.chunk
+import requests, re, urllib2
 from htmlParser import MyParser, get_text_recursive
-#from wikipedia import Wikipedia
 from htmlentitydefs import name2codepoint
 
 
 headersDic = {'Content-Type' : 'application/octet-stream',
            'User-Agent' : 'Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.94 Safari/537.36'} # Headers
-
-"""
-Filter the description given by Google
-@param sentence: Sentence to filter
-@return: A set of revelants words 
-"""
-def filterDescription(sentence):
-    tokens = nltk.word_tokenize(sentence)
-    tagged = nltk.pos_tag(tokens)
-    chunked = nltk.chunk.ne_chunk(tagged)
-    #print chunked
-    def extract(t):
-        names = []
-        if hasattr(t, 'node') and t.node:
-            if t.node == 'PERSON' or t.node == "GPE" or t.node == "ORGANIZATION":
-                names.append(' '.join([child[0] for child in t]))
-            else:   
-                for child in t:
-                    names.extend(extract(child))
-        return names
-    def tokenize(list):
-        l = []
-        for w in list:
-            tokens = re.findall(r'\w+', w,flags = re.UNICODE | re.LOCALE)
-            l.extend(tokens)
-        return l
-    names = []
-    for tree in chunked:
-        names.extend(extract(tree))
-    return set(tokenize(names))
 
 """
 Check if an url comes from Google or not
